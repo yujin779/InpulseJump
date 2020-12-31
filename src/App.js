@@ -11,7 +11,7 @@ import dino from "./dino.glb";
 import create from "zustand";
 
 const useStore = create((set) => ({
-  //画面がクリックされたらtrue
+  //画面がクリックされたらtrueに変更するstate
   tap: false,
   tapTrue: () => set((state) => ({ tap: true })),
   tapFalse: () => set((state) => ({ tap: false }))
@@ -28,13 +28,13 @@ const Dino = () => {
   const tapFalse = useStore((state) => state.tapFalse);
   // tapのstateの値
   const tap = useStore((state) => state.tap);
-  // 床に着地していればtrue
+  // 床に着地していればtrueに変更されるstate
   const [landing, setLanding] = useState(false);
   // useBoxを使用してボックス型の物理演算を設定
   const [ref, api] = useBox(() => ({
     mass: 1,
     args: args,
-    // ダイナソーの位置
+    // ボックスの位置
     position: [-0.5, 3, 0],
     // 床に着地していればtrue
     onCollide: (obj) => {
